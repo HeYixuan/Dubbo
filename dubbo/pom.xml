@@ -13,5 +13,6 @@
   	<module>dubbo-scheduler</module>
   	<module>dubbo-provider</module>
   	<module>dubbo-consumer</module>
+  	<module>dubbo-service</module>
   </modules>
 </project>

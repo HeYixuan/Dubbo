@@ -6,8 +6,16 @@
 		<artifactId>dubbo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>dubbo-core</groupId>
-	<artifactId>dubbo-core</artifactId>
-	<name>dubbo-core</name>
-	<description>核心模块</description>
+	<groupId>dubbo-service</groupId>
+	<artifactId>dubbo-service</artifactId>
+	<name>dubbo-service</name>
+	<description>接口实现模块</description>
+
+	<dependencies>
+  		<dependency>
+			<groupId>dubbo-api</groupId>
+			<artifactId>dubbo-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
