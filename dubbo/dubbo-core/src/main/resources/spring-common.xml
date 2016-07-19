@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"> -->
+	<!-- 1.引入jdbc配置文件 -->
+	<context:property-placeholder location="classpath:*.properties" ignore-unresolvable="true" />
+	<!-- <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true" /> -->
+	<!-- 导入数据库的相关配置 -->
+	<import resource="classpath:spring-shiro.xml" />
+	<import resource="classpath:spring-redis.xml" />
+
+	<!-- 2.配置数据源 -->
+	<!-- org.apache.commons.dbcp.BasicDataSource -->
+	<!-- org.springframework.jdbc.datasource.DriverManagerDataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc_driver}" />
+		<property name="url" value="${jdbc_url}" />
+		<property name="username" value="${jdbc_username}" />
+		<property name="password" value="${jdbc_password}" />
+		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<!-- <property name="initalSize" value="5" /> -->
+		<!--连接池中保留的最小连接数。 -->
+		<!-- <property name="minPoolSize" value="1" /> -->
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<!-- <property name="maxPoolSize" value="300" /> -->
+		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<!-- <property name="maxIdleTime" value="60" /> -->
+	</bean>
+
+	<!-- 3.配置Spring的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.dialect">${hibernate_dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate_showsql}</prop>
+				<prop key="hibernate.format_sql">${hibernate_formatsql}</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<!-- 高速缓存提供程序 -->
+				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+			</props>
+		</property>
+		<!-- 注解方式配置自动扫描包下的实体，也可使用annotatedClasses属性进行单个实体配置 -->
+		<property name="packagesToScan">
+			<list>
+				<value>${hibernate_packagesToScan}</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 4. 创建事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 5. 配置事务异常封装 -->
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+</beans>
