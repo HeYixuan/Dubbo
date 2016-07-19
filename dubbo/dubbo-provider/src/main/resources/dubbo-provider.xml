@@ -14,14 +14,14 @@
 
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
-	
+
 	<!-- 监控中心全局配置 -->
-     <dubbo:monitor/> 
-	
+	<dubbo:monitor protocol="registry" />
+
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="org.springframe.service.SystemUserService" ref="systemUserService" />
-	
+
 	<!-- 具体的实现bean -->
 	<bean id="systemUserService" class="org.springframe.service.impl.SystemUserServiceImpl" />
-	
+
 </beans>
