@@ -14,5 +14,6 @@
   	<module>dubbo-provider</module>
   	<module>dubbo-consumer</module>
   	<module>dubbo-service</module>
+  	<module>dubbo-common</module>
   </modules>
 </project>
