@@ -10,7 +10,7 @@
 	<artifactId>dubbo-core</artifactId>
 	<name>dubbo-core</name>
 	<description>核心模块</description>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework.version>4.2.6.RELEASE</org.springframework.version>
@@ -22,7 +22,7 @@
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 		</dependency>
-		
+
 		<!-- mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -36,7 +36,24 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.1.2</version>
 		</dependency>
-		
+		<!-- hibernate-c3p0 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
+		<!-- hibernate-ehcache -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.2.Final</version>
+		</dependency>
+
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
@@ -48,6 +65,6 @@
 			<artifactId>commons-pool2</artifactId>
 			<version>2.4.2</version>
 		</dependency>
-		
+
 	</dependencies>
 </project>

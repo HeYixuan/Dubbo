@@ -11,7 +11,11 @@
 	<!-- 配置spring的加载文件路径及文件名称 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:dubbo-provider.xml</param-value>
+		<param-value>
+					 classpath*:dubbo-provider.xml,
+					 classpath*:spring-*.xml
+		</param-value>
+		<!-- <param-value>classpath:spring-*.xml</param-value> -->
 	</context-param>
 	<!-- 监听servletContext，启动contextConfigLocation中的spring配置信息 -->
 	<listener>
