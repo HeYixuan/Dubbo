@@ -12,9 +12,15 @@
 	<description>接口实现模块</description>
 
 	<dependencies>
-  		<dependency>
+		<dependency>
 			<groupId>dubbo-api</groupId>
 			<artifactId>dubbo-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>dubbo-core</groupId>
+			<artifactId>dubbo-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
