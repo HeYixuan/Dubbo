@@ -1,6 +1,6 @@
 package org.springframe.service;
 
-public interface SystemUserService {
+public interface TestService {
 	
 	public String testSayDubbo();
 	

@@ -1,8 +1,10 @@
 package org.springframe.service.impl;
 
-import org.springframe.service.SystemUserService;
+import org.springframe.service.TestService;
+import org.springframework.stereotype.Service;
 
-public class SystemUserServiceImpl implements SystemUserService {
+@Service
+public class TestServiceImpl implements TestService {
 
 	public String testSayDubbo() {
 		System.out.println("---testSayDubbo----服务被调用----------");
