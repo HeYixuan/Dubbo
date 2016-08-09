@@ -10,19 +10,10 @@ import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("unchecked")
 @Repository
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class BaseDaoImpl<T extends Serializable> implements BaseDao<T> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	/*public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}*/
 
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
