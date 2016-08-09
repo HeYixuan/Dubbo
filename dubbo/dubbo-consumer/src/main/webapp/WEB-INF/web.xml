@@ -13,7 +13,10 @@
 	<!-- 配置spring的加载文件路径及文件名称 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:dubbo-consumer.xml</param-value>
+		<param-value>
+					classpath:dubbo-consumer.xml,
+					classpath*:spring-*.xml
+		</param-value>
 	</context-param>
 	<!-- 监听servletContext，启动contextConfigLocation中的spring配置信息 -->
 	<listener>
@@ -26,7 +29,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-mvc.xml</param-value>
+			<param-value>classpath*:spring-mvc.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

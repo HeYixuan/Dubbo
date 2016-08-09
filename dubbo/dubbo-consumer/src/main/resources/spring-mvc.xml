@@ -13,13 +13,17 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd"
 	default-lazy-init="false">
+	
+ 	<!-- 开启事务自动提交，回滚 -->
+	<!-- 以 @Transactional 标注来定义事务 -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
 
 	<!-- 开启注解 -->
 	<mvc:annotation-driven enable-matrix-variables="true" />
 
 	<!-- 5. 使用声明式事务 transaction-manager：引用上面定义的事务管理器 -->
 	<!-- 注解扫描包 自动扫描注解的bean -->
-	<context:component-scan base-package="org.springframe" />
+	<context:component-scan base-package="org.springframe.*" />
 
 	<!-- 启用注解配置 -->
 	<context:annotation-config />

@@ -46,6 +46,7 @@
 	</bean>
 
 	<!-- 3.配置Spring的SessionFactory -->
+		<!-- org.springframework.orm.hibernate4.LocalSessionFactoryBean -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -64,7 +65,7 @@
 		<!-- 注解方式配置自动扫描包下的实体，也可使用annotatedClasses属性进行单个实体配置 -->
 		<property name="packagesToScan">
 			<list>
-				<value>${hibernate_packagesToScan}</value>
+				<value>${packagesToScan}</value>
 			</list>
 		</property>
 	</bean>

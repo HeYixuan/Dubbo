@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @param <T>
  */
-public interface BaseDao<T> {
+public interface BaseDao<T extends Serializable> {
 	
 	/** 
      * 保存一个对象 
