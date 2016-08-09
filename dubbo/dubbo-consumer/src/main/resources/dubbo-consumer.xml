@@ -13,7 +13,7 @@
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:reference interface="org.springframe.service.SystemUserService"
-		id="systemUserService" check="false" timeout="5000" />
+	<dubbo:reference interface="org.springframe.service.TestService"
+		id="testService" check="false" timeout="5000" />
 
 </beans>
